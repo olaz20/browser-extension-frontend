@@ -151,7 +151,7 @@ body{
 }
 .card-header{
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* align items at the top */
     gap: 12px;
 }
 
