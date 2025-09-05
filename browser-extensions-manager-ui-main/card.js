@@ -26,7 +26,7 @@ fetch("data.json").then(response => {
                     <input type="checkbox" class="toggle-input">
                     <span class="toggle-slider"></span>
                    </label>
-                </div>   
+                </div>
             `;
             grid.appendChild(card);
         });
