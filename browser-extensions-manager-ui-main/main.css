@@ -56,16 +56,19 @@ body{
     }
 
 
-.nav img{
+.nav img {
+  padding: 0;
+  min-width: 0;
+  max-width: none; /* prevent that 40% rule from interfering */
+}
+.nav img.logo{
     flex: 0 1 auto;
-    max-width: 40%;
-    padding: 0%;
-    min-width: 0;
-    overflow: hidden;
+    width: clamp(80px, 14vw, 140px);
+    height: auto;
 }
 
 .nav .img-button{
-    width: clamp(24px, 4vw, 40px);
+    width: clamp(28px, 5vw, 40px);
     max-width: none;  /* cancel nav rule */
     flex: 0 0 auto;
     padding: 6px; 
@@ -89,6 +92,8 @@ body{
     margin-top: 30px;
     margin-bottom: 20px;
     min-width: 0;
+    flex-wrap: wrap;
+    gap:10px;
 }
 .header h1{
     margin: 0;
@@ -101,12 +106,15 @@ body{
 .buttons {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     flex: 0 1 auto; 
     gap: 10px;
     min-width: 0; /* Allows content to shrink */
-   
-
+    justify-content: flex-end;
+}
+.buttons button {
+  flex: 0 1 auto; /* allow them to shrink a little */
+  min-width: 0;
 }
 .all,
 .active,
@@ -229,3 +237,30 @@ body{
 .toggle-input:checked + .toggle-slider:before {
     transform: translateX(20px);
 }
+
+@media (max-width: 720px) {
+  /* stack header to keep spacing readable */
+  .header {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .buttons {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+  .header h1 {
+    font-size: clamp(1rem, 4.5vw, 1.4rem);
+    white-space: normal; /* allow wrap if needed */
+  }
+}
+
+/* small phone adjustments */
+@media (max-width: 420px) {
+  .nav { padding: 8px 12px; }
+  .nav img.logo { width: clamp(60px, 20vw, 110px); }
+  .nav .img-button { width: 32px; padding: 4px; border-radius: 6px; }
+  .card-header img { width: 44px; height: 44px; flex: 0 0 44px; }
+  .card-details h2 { font-size: 0.95rem; }
+}
+
