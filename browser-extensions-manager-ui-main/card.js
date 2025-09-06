@@ -36,6 +36,13 @@ fetch("data.json")
           </div>
         `;
         grid.appendChild(card);
+        const toggle = card.querySelector(".toggle-input");
+        toggle.addEventListener("change", () => {
+            ext.isActive = toggle.checked; // update in-memory array
+            const activeFilter = document.querySelector(".active").classList.contains("selected") ? "active":
+            document.querySelector(".inactive").classList.contains("selected") ? "inactive" : "all";
+            renderCards(activeFilter); // re-render based on current filter
+        })
       });
     }
 
