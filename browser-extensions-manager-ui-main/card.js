@@ -35,6 +35,13 @@ fetch("data.json")
             </label>
           </div>
         `;
+        const removeBtn = card.querySelector(".remove-btn");
+        removeBtn.addEventListener("click", () => {
+            card.remove();
+            const realIndex = extensions.indexOf(ext);
+            if (realIndex !== -1){
+                extensions.splice(realIndex, 1);
+            }});
         grid.appendChild(card);
         const toggle = card.querySelector(".toggle-input");
         toggle.addEventListener("change", () => {
